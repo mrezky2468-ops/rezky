@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photography — Rezky</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="logo">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M6 26V6h14a6 6 0 010 12H10M18 18l8 8" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+  </div>
+  <button class="btn-contact"><span class="dot"></span> Get in touch →</button>
+</nav>
+
+<section class="photo-hero">
+  <h1>Hi, Im Rezky (レズキー)</h1>
+  <p class="subtitle" style="margin-bottom:0;">Graphic Designer / UI/UX Designer</p>
+</section>
+
+<div class="photo-gallery" id="gallery">
+  <div class="photo-card" data-index="0">
+    <img src="assets/hobby_1.jpg" alt="Sunrise Pulau Putri">
+    <h3>Sunrise Pulau Putri</h3>
+    <p class="loc-type">Tourist Attractions: Stunning views of Singapore's skyscrapers, white sandy beaches, and coral reefs.</p>
+    <p class="meta">Location: Sambau Village, Nongsa District, Batam, directly bordering Singapore.</p>
+    <p class="meta">Activities: Snorkeling, hiking, camping, fishing, and sunrise/sunset viewing. Easy access from Nongsa Beach by boat.</p>
+  </div>
+
+  <div class="photo-card" data-index="1">
+    <img src="assets/hobby_2.jpg" alt="Color of a pole">
+    <h3>Color of a pole</h3>
+    <p class="loc-type">Tourist Attractions: Stunning views of Singapore's skyscrapers, white sandy beaches, and coral reefs.</p>
+    <p class="meta">Location: Sambau Village, Nongsa District, Batam, directly bordering Singapore.</p>
+    <p class="meta">Activities: Snorkeling, hiking, camping, fishing, and sunrise/sunset viewing. Easy access from Nongsa Beach by boat.</p>
+  </div>
+
+  <div class="photo-card" data-index="2">
+    <img src="assets/hobby_3.jpg" alt="Rooftop with homie">
+    <h3>Rooftop with homie</h3>
+    <p class="loc-type">Chilling on the rooftop</p>
+    <p class="meta">Location: 3X39+5M4, Unnamed Road, Buliang, Kec. Batu Aji, Kota Batam, Kepulauan Riau 29425</p>
+    <p class="meta">Activities: Thrift Shopping</p>
+  </div>
+
+  <div class="photo-card" data-index="3">
+    <img src="assets/hobby_4.jpg" alt="Rooftop with homie">
+    <h3>Rooftop with homie</h3>
+    <p class="loc-type">Chilling on the rooftop</p>
+    <p class="meta">Location: 3X39+5M4, Unnamed Road, Buliang, Kec. Batu Aji, Kota Batam, Kepulauan Riau 29425</p>
+    <p class="meta">Activities: Thrift Shopping</p>
+  </div>
+
+  <div class="photo-card" data-index="4">
+    <img src="assets/hobby_5.jpg" alt="Rooftop with homie">
+    <h3>Rooftop with homie</h3>
+    <p class="loc-type">Chilling on the rooftop</p>
+    <p class="meta">Location: 3X39+5M4, Unnamed Road, Buliang, Kec. Batu Aji, Kota Batam, Kepulauan Riau 29425</p>
+    <p class="meta">Activities: Thrift Shopping</p>
+  </div>
+
+  <div class="photo-card" data-index="5">
+    <img src="assets/hobby_6.jpg" alt="Rooftop with homie">
+    <h3>Rooftop with homie</h3>
+    <p class="loc-type">Chilling on the rooftop</p>
+    <p class="meta">Location: 3X39+5M4, Unnamed Road, Buliang, Kec. Batu Aji, Kota Batam, Kepulauan Riau 29425</p>
+    <p class="meta">Activities: Thrift Shopping</p>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose">&times;</button>
+  <button class="lb-nav lb-prev" id="lbPrev">←</button>
+  <img id="lbImage" src="" alt="">
+  <button class="lb-nav lb-next" id="lbNext">→</button>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <svg width="34" height="34" viewBox="0 0 32 32" fill="none"><path d="M6 26V6h14a6 6 0 010 12H10M18 18l8 8" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="footer-bottom">
+    <span>© Muhammad Rezky</span>
+    <div class="footer-links">
+      <a href="#">Terms</a><a href="#">Privacy</a><a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const photos = [
+    'assets/hobby_1.jpg','assets/hobby_2.jpg','assets/hobby_3.jpg',
+    'assets/hobby_4.jpg','assets/hobby_5.jpg','assets/hobby_6.jpg'
+  ];
+  let current = 0;
+  const lightbox = document.getElementById('lightbox');
+  const lbImage = document.getElementById('lbImage');
+
+  function openLightbox(i) {
+    current = i;
+    lbImage.src = photos[current];
+    lightbox.classList.add('open');
+  }
+  function closeLightbox() { lightbox.classList.remove('open'); }
+  function showNext() { current = (current + 1) % photos.length; lbImage.src = photos[current]; }
+  function showPrev() { current = (current - 1 + photos.length) % photos.length; lbImage.src = photos[current]; }
+
+  document.querySelectorAll('.photo-card').forEach(card => {
+    card.addEventListener('click', () => openLightbox(parseInt(card.dataset.index)));
+  });
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+  document.getElementById('lbNext').addEventListener('click', showNext);
+  document.getElementById('lbPrev').addEventListener('click', showPrev);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') showNext();
+    if (e.key === 'ArrowLeft') showPrev();
+  });
+</script>
+
+</body>
+</html>
